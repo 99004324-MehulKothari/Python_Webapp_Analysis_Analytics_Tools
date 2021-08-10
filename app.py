@@ -1,13 +1,9 @@
 from logging import debug
 from flask import Flask, app,redirect,url_for,render_template,request
-from pandas.io.formats import style
 import pyodbc
 import pandas as pd
-import plotly.express as px
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
-import plotly.offline as offline
-from flask import Markup
 import pygal
 from pygal.style import Style
 
