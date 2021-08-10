@@ -5,9 +5,12 @@ import pandas as pd
 import plotly.express as px
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
-server = 'myserver012.database.windows.net'
-database = 'car_database'
-username = 'azureuser'
+import plotly.offline as offline
+from flask import Markup
+
+server = 'sql-car.database.windows.net'
+database = 'car_details'
+username = 'azure-car'
 password = '{India#123}'   
 driver= '{ODBC Driver 17 for SQL Server}'
 app=Flask(__name__)
@@ -96,11 +99,19 @@ def analysis_results():
             
     df['Cars_Manufactured '+analysis_drop2+' (in millions)']=df1['Cars_Manufactured '+analysis_drop2+' (in millions)']
     
+    x=df['Year']
+    y=df.columns[1:3]
+    # fig1 = px.line(df, x="Year",y=df.columns[1:3])
+    # # a=fig1.show()
+    # # fig.show()
+    # # return redirect(url_for('analysis'))
+    # with open('graph.html', 'w') as f:
+    #     f.write(fig1.to_html(full_html=True, include_plotlyjs='cdn'))
+    
+    return render_template('graph.html',labels=x ,values=y) 
 
-    fig = px.line(df, x="Year",y=df.columns[1:3])
-    fig.show()
-    return redirect(url_for('analysis'))
-
+    # offline.plot(fig1, filename='graph.html')
+    # return render_template('graph.html')
 
 @app.route('/analytics_results',methods=['GET', 'POST'])
 def analytics_results():
