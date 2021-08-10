@@ -1,5 +1,6 @@
 from logging import debug
 from flask import Flask, app,redirect,url_for,render_template,request
+from pandas.io.formats import style
 import pyodbc
 import pandas as pd
 import plotly.express as px
@@ -7,6 +8,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 import plotly.offline as offline
 from flask import Markup
+import pygal
+from pygal.style import Style
 
 server = 'sql-car.database.windows.net'
 database = 'car_details'
@@ -18,6 +21,8 @@ analysis_drop1=0
 analysis_drop2=0
 analytics_drop=0
 analytics_year=0
+
+
 
 @app.route('/',methods=['GET', 'POST'])
 def index():
@@ -99,8 +104,8 @@ def analysis_results():
             
     df['Cars_Manufactured '+analysis_drop2+' (in millions)']=df1['Cars_Manufactured '+analysis_drop2+' (in millions)']
     
-    x=df['Year']
-    y=df.columns[1:3]
+    # x=df['Year']
+    # y=df.columns[1:3]
     # fig1 = px.line(df, x="Year",y=df.columns[1:3])
     # # a=fig1.show()
     # # fig.show()
@@ -108,11 +113,29 @@ def analysis_results():
     # with open('graph.html', 'w') as f:
     #     f.write(fig1.to_html(full_html=True, include_plotlyjs='cdn'))
     
-    return render_template('graph.html',labels=x ,values=y) 
+    # return render_template('graph.html',labels=x ,values=y) 
 
     # offline.plot(fig1, filename='graph.html')
     # return render_template('graph.html')
 
+    # line_chart = pygal.Line()
+    # line_chart._title = 'Browser usage evolution (in %)'
+    # line_chart.x_labels = map(str, range(2002, 2013))
+    # line_chart.add = ('abc',[1,2,3,4])
+    # line_chart.add = ('def',[2,3,4,5])
+    # return line_chart.render_response()
+    custom_style = Style(
+        background='#FFE5B4',
+    )
+    line_chart = pygal.Line(x_title="Year",y_title="Cars_Manufactured(in millions)",legend_at_bottom=True,style=custom_style)
+    line_chart.title =str(analysis_drop1).capitalize() +' Vs '+str(analysis_drop2).capitalize()
+    line_chart.x_labels = df['Year']
+    # line_chart._legend
+    # [line_chart.add(df[x],df[x].values) for x in df.columns[1:3]]
+    for x in df.columns[1:3]:
+        line_chart.add(x,df[x].values)
+    # return line_chart.render()
+    return line_chart.render_response()
 @app.route('/analytics_results',methods=['GET', 'POST'])
 def analytics_results():
     with pyodbc.connect('DRIVER='+driver+';SERVER=tcp:'+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password) as conn:
