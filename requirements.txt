@@ -3,3 +3,4 @@ pyodbc
 pandas
 plotly
 sklearn
+pygal
