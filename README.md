@@ -12,6 +12,9 @@
 ## Build and Deploy Badge
 [![Azure App Service - Carwebapp(Production), Build and deploy Python app](https://github.com/99004324-MehulKothari/Python_Webapp_Analysis_Analytics_Tools/actions/workflows/main_carwebapp.yml/badge.svg)](https://github.com/99004324-MehulKothari/Python_Webapp_Analysis_Analytics_Tools/actions/workflows/main_carwebapp.yml)
 
+![status](https://user-images.githubusercontent.com/84438487/130188464-a42c0ca8-644e-4ceb-b4a3-e8a86e03b3f1.jpeg)
+
+
 
 ## Folder Structure
 Folder             | Description
@@ -33,14 +36,14 @@ PS No. |  Name   |  Contribution |Issues Raised
 4.	Data sharing – using bulk share and sqlcmd.
 
 ## References
-https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-create
-https://azure.microsoft.com/en-in/services/app-service
-https://docs.microsoft.com/en-us/azure/cdn/cdn-add-to-web-app
-https://marczak.io/posts/azure-loading-csv-to-sql
-https://docs.microsoft.com/en-us/azure/azure-monitor/overview
-https://www.w3schools.com/tags/tag_button.asp
-https://www.w3schools.com/html/html_form_attributes_form.asp
-http://www.pygal.org/en/stable
-https://docs.sdl.com/801922/570899/sdl-tridion-docs-13-sp2/microsoft-sql-server-ports
-https://www.sqlshack.com/bcp-bulk-copy-program-command-in-action
+* https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-create
+* https://azure.microsoft.com/en-in/services/app-service
+* https://docs.microsoft.com/en-us/azure/cdn/cdn-add-to-web-app
+* https://marczak.io/posts/azure-loading-csv-to-sql
+* https://docs.microsoft.com/en-us/azure/azure-monitor/overview
+* https://www.w3schools.com/tags/tag_button.asp
+* https://www.w3schools.com/html/html_form_attributes_form.asp
+* http://www.pygal.org/en/stable
+* https://docs.sdl.com/801922/570899/sdl-tridion-docs-13-sp2/microsoft-sql-server-ports
+* https://www.sqlshack.com/bcp-bulk-copy-program-command-in-action
 
